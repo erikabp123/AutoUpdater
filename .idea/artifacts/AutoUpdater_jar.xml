@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AutoUpdater:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AutoUpdater_jar</output-path>
+    <root id="archive" name="AutoUpdater.jar">
+      <element id="module-output" name="AutoUpdater" />
+    </root>
+  </artifact>
+</component>
