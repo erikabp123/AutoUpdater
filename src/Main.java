@@ -20,14 +20,15 @@ public class Main {
     }
 
     private static void moveFile(String curPath, String newPath) throws IOException {
-        File managerJar = new File(curPath);
-        if(managerJar.exists()){
+        File file = new File(curPath);
+        if(file.exists()){
             Files.move(Paths.get(curPath), Paths.get(newPath), StandardCopyOption.REPLACE_EXISTING);
         }
     }
 
     private static void moveManagerJar() throws IOException {
         moveFile("downloads/ClassicAddonManager.jar", "system/ClassicAddonManager.jar");
+        moveFile("downloads/CHANGELOG.txt", "system/CHANGELOG.txt");
     }
 
     private static void moveExe() throws IOException {
@@ -36,7 +37,7 @@ public class Main {
 
     private static void restartManager(){
         try {
-            Runtime.getRuntime().exec("cmd /c \"system\\jdk-12.0.2\\bin\\javaw.exe -jar system\\ClassicAddonManager.jar\"");
+            Runtime.getRuntime().exec("cmd /c \"system\\jdk-12.0.2\\bin\\javaw.exe -jar system\\ClassicAddonManager.jar updated\"");
         } catch (IOException e) {
             e.printStackTrace();
         }
