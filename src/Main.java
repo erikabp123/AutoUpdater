@@ -6,8 +6,12 @@ import java.nio.file.StandardCopyOption;
 
 public class Main {
 
+    public static boolean JAVA_INSTALLED = false;
+
     public static void main(String[] args) throws IOException {
         int sleepTime = Integer.parseInt(args[0]);
+        JAVA_INSTALLED = Boolean.parseBoolean(args[1]);
+
         try {
             Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
@@ -37,7 +41,11 @@ public class Main {
 
     private static void restartManager(){
         try {
-            Runtime.getRuntime().exec("cmd /c \"system\\jdk-12.0.2\\bin\\javaw.exe -jar system\\ClassicAddonManager.jar updated\"");
+            if(JAVA_INSTALLED){
+                Runtime.getRuntime().exec("cmd /c \"java -jar system\\ClassicAddonManager.jar updated\"");
+            } else {
+                Runtime.getRuntime().exec("cmd /c \"system\\jdk-12.0.2\\bin\\javaw.exe -jar system\\ClassicAddonManager.jar updated\"");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
