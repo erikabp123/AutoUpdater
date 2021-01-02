@@ -7,10 +7,11 @@ import java.nio.file.StandardCopyOption;
 public class Main {
 
     public static boolean JAVA_INSTALLED = false;
+    public static boolean DEFAULT_SLEEP_LENGTH;
 
     public static void main(String[] args) throws IOException {
         int sleepTime = Integer.parseInt(args[0]);
-        JAVA_INSTALLED = Boolean.parseBoolean(args[1]);
+        if(args.length > 1) JAVA_INSTALLED = Boolean.parseBoolean(args[1]);
 
         try {
             Thread.sleep(sleepTime);
